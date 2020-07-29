@@ -17,6 +17,7 @@ public class Operation {
             Collections.sort(trendingList, new VotesAmount());
             for (TrendingLL t: trendingList){ //print out sorting list
                System.out.println("No."+i+":  "+t);
+               i++;
             }
             System.out.println(" ");
         }
@@ -43,7 +44,6 @@ public class Operation {
                 if(trendingList.stream().filter(c -> c.name.equals(topicName)).count() > 0) 
                     System.out.println("Trending exist!\n");
             }
-
         }
     }
     // Vote for trending
@@ -112,13 +112,3 @@ public class Operation {
         }
     }
 }
-class VotesAmount implements Comparator<TrendingLL>{
-         @Override
-         public int compare(TrendingLL t1, TrendingLL t2) {
-             if(t1.votes < t2.votes){
-                return 1;
-            } else {
-                 return -1;
-             }
-         }
- }
