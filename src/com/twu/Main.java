@@ -1,15 +1,13 @@
+
 // package com.twu;
-import java.util.Scanner;
-
-// import org.graalvm.compiler.core.common.type.ArithmeticOpTable.Op;
-
+import java.util.*;
 
 public class Main {
 
     static Scanner inputString = null;
+
     public static String inputFunc(){
         inputString = new Scanner(System.in); ;
-        // String st =  inputString.nextLine();
         return inputString.nextLine();
     }
     public static void main(String[] args) {
@@ -25,6 +23,10 @@ public class Main {
                 case "1":
                     System.out.println("Please enter your username: ");
                     String userName = inputFunc();
+                    // create user object and add to linklist
+                    UserLL user = new UserLL(userName);
+                    // userList.add(user.toString());
+
                     boolean flag_user = true;
                     while(flag_user){ // while user didn't exit user menu
                         Menu.userMenu(userName);
@@ -34,7 +36,7 @@ public class Main {
                                 flag_user = false;
                                 break;
                             default: // do operation that user choose
-                                Operation.runOperation(inputOperator);
+                                Operation.runOperation(inputOperator,user);
                                 break;
                         }
                     }
@@ -44,12 +46,14 @@ public class Main {
                     System.out.println("Please enter your adminname: ");
                     String adminName = inputFunc();
                     System.out.println("Please enter your password: ");
-                    String adminPsw = inputFunc();
+                    int adminPsw = Integer.parseInt(inputFunc()) ;
                     // check if username or password valid
-                    if (adminName != "admin" && adminPsw != "1234"){
+                    if (adminName != "admin" && adminPsw != 1234){
                         System.out.println("Soory!! Please check your username and password! \n");
                         break;
                     }
+                    UserLL admin = new UserLL(adminName);
+
                     boolean flag_admin = true;
                     while(flag_admin){ //while user didn't exit admin menu
                         // show admin menu
@@ -60,7 +64,7 @@ public class Main {
                                 flag_admin = false;
                                 break;
                             default: // do operation that user choose
-                                Operation.runOperation(inputOperator);
+                                Operation.runOperation(inputOperator,admin);
                                 break;
                         }
                     }
