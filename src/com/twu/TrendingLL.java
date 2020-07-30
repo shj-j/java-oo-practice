@@ -1,7 +1,7 @@
 public class TrendingLL {
     String name;
     int votes;
-    float price;
+    int price;
     Boolean issuper;
    
     public TrendingLL(String topicname){
